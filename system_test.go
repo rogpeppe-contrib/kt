@@ -77,7 +77,7 @@ func TestSystem(t *testing.T) {
 	require.NoError(t, err)
 	defer os.RemoveAll(fnTopicDetail)
 
-	status, stdOut, stdErr = newCmd().stdIn(string(buf)).run("./kt", "admin", "-createtopic", topicName, "-topicdetail", fnTopicDetail)
+	status, stdOut, stdErr = newCmd().stdIn(string(buf)).run("./kt", "admin", "-createtopic", topicName, "-topicdetail", fnTopicDetail, "-tlsca", "data/ca-cert", "-tlscert", "data/cert-signed", "-tlscertkey", "data/ca-key")
 	fmt.Printf(">> system test kt admin -createtopic %v stdout:\n%s\n", topicName, stdOut)
 	fmt.Printf(">> system test kt admin -createtopic %v stderr:\n%s\n", topicName, stdErr)
 	require.Zero(t, status)
