@@ -59,7 +59,7 @@ func (f *commonFlags) brokers() []string {
 func (f *commonFlags) addFlags(flags *flag.FlagSet) {
 	f.brokerStrs = []string{"localhost"}
 	f.version = defaultKafkaVersion
-	flags.Var(listFlag{&f.brokerStrs}, "brokers", "Comma separated list of brokers. Port defaults to 9092 when omitted.")
+	flags.Var(listFlag{&f.brokerStrs}, "brokers", "Comma-separated list of brokers.  Each broker definition may optionally contain a port number. The port defaults to 9092 when omitted.")
 	flags.Var(kafkaVersionFlag{v: &f.version}, "version", "Kafka protocol version")
 	flags.StringVar(&f.tlsCA, "tlsca", "", "Path to the TLS certificate authority file")
 	flags.StringVar(&f.tlsCert, "tlscert", "", "Path to the TLS client certificate file")
